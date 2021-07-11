@@ -1,0 +1,28 @@
+{
+  "name": "nodecookie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "start": "nodemon server.js"
+  },
+  "author": "Eden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edenavital/nodeCookie/issues"
+  },
+  "homepage": "https://github.com/edenavital/nodeCookie#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0"
+  }
+}
