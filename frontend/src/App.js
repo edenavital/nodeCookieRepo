@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import "./App.css";
+const URL = "http://localhost:5000/api";
 
-function App() {
+const App = () => {
+  const specialReq = async ({ method, data }) => {
+    try {
+      const res = await axios({
+        method,
+        data,
+        url: URL,
+        withCredentials: true,
+      });
+      console.log("res", res);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  const getData = () => {
+    specialReq({ method: "get" });
+  };
+
+  const postData = async () => {
+    specialReq({
+      method: "post",
+      data: "testtt",
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button style={{ marginBottom: 10 }} onClick={getData}>
+          GET REQ
+        </button>
+        <button onClick={postData}>POST REQ</button>
       </header>
     </div>
   );
-}
+};
 
 export default App;
