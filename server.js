@@ -5,7 +5,7 @@ dotenv.config({ path: "./config.env" });
 
 const app = require("./app");
 
-const PORT = process.env.NODE_ENV || 5000;
+const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
