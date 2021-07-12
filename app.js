@@ -15,19 +15,19 @@ const app = express();
 
 app.use(cors());
 
-// app.use(function (req, res, next) {
-//   const origin =
-//     process.env.NODE_ENV === "development"
-//       ? "http://localhost:5000"
-//       : "https://node-cookie.herokuapp.com";
-//   res.header("Access-Control-Allow-Origin", origin);
-//   res.header("Access-Control-Allow-Credentials", true);
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  const origin =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:5000"
+      : "https://node-cookie.herokuapp.com";
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Development logging
 if (process.env.NODE_ENV === "development") {
