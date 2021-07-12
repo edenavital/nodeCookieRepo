@@ -1,6 +1,6 @@
 import axios from "axios";
 import "./App.css";
-const URL = "http://localhost:5000/api";
+const URL = "/api";
 
 const App = () => {
   const specialReq = async ({ method, data }) => {
