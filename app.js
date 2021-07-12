@@ -13,21 +13,31 @@ const app = express();
 // Set security HTTP headers
 // app.use(helmet());
 
-app.use(cors());
+// app.use(cors());
 
-app.use(function (req, res, next) {
-  const origin =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:5000"
-      : "https://node-cookie.herokuapp.com";
-  res.header("Access-Control-Allow-Origin", origin);
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      return callback(null, true);
+    },
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
+
+// app.use(function (req, res, next) {
+//   const origin =
+//     process.env.NODE_ENV === "development"
+//       ? "http://localhost:5000"
+//       : "https://node-cookie.herokuapp.com/api";
+//   res.header("Access-Control-Allow-Origin", origin);
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 // Development logging
 if (process.env.NODE_ENV === "development") {
