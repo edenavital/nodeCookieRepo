@@ -15,7 +15,7 @@ exports.generateToken = (req, res, next) => {
     ),
     sameSite: "none",
     secure: true,
-    // httpOnly: true,
+    httpOnly: true,
   };
 
   // if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
