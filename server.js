@@ -4,8 +4,20 @@ dotenv.config({ path: "./config.env" });
 
 const app = require("./app");
 
-const port = 5000;
+const PORT = 5000;
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
+  });
+}
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/frontend/public/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}...`);
 });
