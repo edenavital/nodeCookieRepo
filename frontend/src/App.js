@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./App.css";
-// const URL = "https://node-cookie.herokuapp.com/api";
-const URL = "/api";
+const URL = "https://node-cookie.herokuapp.com/api";
+// const URL = "http://localhost:5000/api";
 
 const App = () => {
   const specialReq = async ({ method, data }) => {
